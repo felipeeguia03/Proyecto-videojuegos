@@ -6,7 +6,6 @@ public class BoatSpawner2D : MonoBehaviour
     public Transform lighthouseCenter;
     public float spawnRadius = 10f;
     public float spawnInterval = 2f;
-
     private float timer;
 
     void Update()

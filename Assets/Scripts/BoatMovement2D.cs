@@ -4,7 +4,7 @@ public class BoatMovement2D : MonoBehaviour
 {
     public float speed = 3f;
     private Vector3 target;
-
+    private SoundManager soundmanager;
     public void SetTarget(Vector3 t)
     {
         target = t;
@@ -15,11 +15,13 @@ public class BoatMovement2D : MonoBehaviour
 
     void Update()
     {
+        soundmanager = FindFirstObjectByType<SoundManager>();
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
             Debug.Log("Barco se estrelló");
+            soundmanager.SeleccionAudio();
             Destroy(gameObject);
         }
     }

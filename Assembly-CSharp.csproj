@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/BoatMovement2D.cs" />
     <Compile Include="Assets/Scripts/BoatSpwaner2D.cs" />
     <Compile Include="Assets/Scripts/Saved.cs" />
+    <Compile Include="Assets/Scripts/SoundManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

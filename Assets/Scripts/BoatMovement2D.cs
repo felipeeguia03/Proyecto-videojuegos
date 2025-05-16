@@ -4,12 +4,20 @@ public class BoatMovement2D : MonoBehaviour
 {
     public float speed = 3f;
     private Vector3 target;
+    private BoatType boatType;
+    private BoatPool pool;
+
+    public void Initialize(BoatType type, BoatPool boatPool)
+    {
+        boatType = type;
+        pool = boatPool;
+    }
 
     public void SetTarget(Vector3 t)
     {
         target = t;
-        Vector3 direction = (t - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 dir = (target - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
     }
 
@@ -19,8 +27,15 @@ public class BoatMovement2D : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
-            Debug.Log("Barco se estrelló");
-            Destroy(gameObject);
+            if (pool != null)
+            {
+                pool.ReturnBoat(boatType, this.gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("Pool no asignado, destruyendo el barco");
+                Destroy(gameObject);
+            }
         }
     }
 }

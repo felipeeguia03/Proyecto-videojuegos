@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Barco-Crucero_0: 4335858432011208873
+      Barco-Crucero_1: -4776730035599727571
+      Barco-Crucero_2: 2875905549327253681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

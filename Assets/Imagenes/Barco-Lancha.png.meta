@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Barco-Lancha_0: -2242367561573244925
+      Barco-Lancha_1: -5707149684797709033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

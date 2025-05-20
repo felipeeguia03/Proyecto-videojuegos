@@ -8,24 +8,30 @@ public class ContadorBarcos : MonoBehaviour
 {
     
     int cantidadBarcosMuertos = 0;
+    int cantidadBarcosIluminados = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Emisor emi = GameObject.Find("ObjetoEmisor").GetComponent<Emisor>();
-        Receptor rec = GameObject.Find("ObjetoReceptor").GetComponent<Receptor>();
-        rec.Subscribirse(emi);
+        //Emisor[] emisores = GameObject.Find("Boat-Factory-Manager").GetComponents<Emisor>();
+        //Receptor rec = GameObject.Find("ContadorBarcos").GetComponent<Receptor>();
+        //rec.Subscribirse(emi);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<TMP_Text>().text = "Barcos muertos: " + cantidadBarcosMuertos + "\nBarcos iluminados: " + cantidadBarcosIluminados;
     }
 
     public void SumarBarcoMuerto()
     {
         cantidadBarcosMuertos++;
         Debug.Log("Barcos muertos: " + cantidadBarcosMuertos);
-        GetComponent<Text>().text = "Barcos muertos: " + cantidadBarcosMuertos;
     }
+
+    public void SumarBarcoIluminado(){
+        cantidadBarcosIluminados++;
+        Debug.Log("Barcos iluminados: " + cantidadBarcosIluminados);
+    }
+
 }

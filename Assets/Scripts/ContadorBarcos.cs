@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ContadorBarcos : MonoBehaviour
 {
-    
+
     int cantidadBarcosMuertos = 0;
     int cantidadBarcosIluminados = 0;
     // Start is called before the first frame update
@@ -27,11 +28,21 @@ public class ContadorBarcos : MonoBehaviour
     {
         cantidadBarcosMuertos++;
         Debug.Log("Barcos muertos: " + cantidadBarcosMuertos);
+        if (cantidadBarcosMuertos >= 3)
+        {
+            Restart();
+        }
     }
 
-    public void SumarBarcoIluminado(){
+    public void SumarBarcoIluminado()
+    {
         cantidadBarcosIluminados++;
         Debug.Log("Barcos iluminados: " + cantidadBarcosIluminados);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("FinalScene");
     }
 
 }

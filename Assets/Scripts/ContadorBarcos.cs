@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ContadorBarcos : MonoBehaviour
 {
@@ -27,11 +28,19 @@ public class ContadorBarcos : MonoBehaviour
     {
         cantidadBarcosMuertos++;
         Debug.Log("Barcos muertos: " + cantidadBarcosMuertos);
+            if (cantidadBarcosMuertos >= 3)
+            {
+                Restart();
+            }
     }
 
     public void SumarBarcoIluminado(){
         cantidadBarcosIluminados++;
         Debug.Log("Barcos iluminados: " + cantidadBarcosIluminados);
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene("menuScene");
     }
 
 }

@@ -170,12 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789f40dfa5204dc5a5c7729d410fdd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mi_accion:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoMuerto, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-  subscripciones: []
 --- !u!114 &206586710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a274a5a005a2b542981c5cc048b8424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantidadBarcosMuertos: 0
-  cantidadBarcosIluminados: 0
 --- !u!114 &206586711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +981,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: c3248634f1caf924281354c507cf688f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1097,12 +1089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436698519c3bc584abaa2ba26d223d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoMuerto, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-  nombreEmisor: EmisorMuerte
 --- !u!114 &1948477118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,12 +1101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436698519c3bc584abaa2ba26d223d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoIluminado, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-  nombreEmisor: EmisorIluminacion
 --- !u!1 &1963584238
 GameObject:
   m_ObjectHideFlags: 0

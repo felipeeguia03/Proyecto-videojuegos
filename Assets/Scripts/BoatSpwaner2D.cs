@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BoatSpawner2D : MonoBehaviour
 {
-    public GameObject[] boatPrefabs;
+    public BoatPool pool;
     public Transform lighthouseCenter;
-    public float spawnRadius = 10f;
+    public float spawnRadius = 12f;
     public float spawnInterval = 2f;
     private float timer;
 
@@ -18,29 +18,48 @@ public class BoatSpawner2D : MonoBehaviour
         }
     }
 
-    void SpawnBoat()
+void SpawnBoat()
+{
+    Vector2 dir = Random.insideUnitCircle.normalized;
+    Vector3 spawnPos = lighthouseCenter.position + new Vector3(dir.x, dir.y, 0) * spawnRadius;
+
+    BoatType type = (BoatType)Random.Range(0, 3);
+    GameObject boat = pool.GetBoat(type);
+
+    boat.transform.position = spawnPos;
+    boat.transform.rotation = Quaternion.identity;
+
+    BoatMovement2D mover = boat.GetComponent<BoatMovement2D>();
+    mover.speed = GetSpeed(type);
+    mover.Initialize(type, pool);
+    mover.SetTarget(lighthouseCenter.position);
+
+
+    if (type == BoatType.BarcoComun)
     {
-        Vector2 dir = Random.insideUnitCircle.normalized;
-        Vector3 spawnPos = lighthouseCenter.position + new Vector3(dir.x, dir.y, 0) * spawnRadius;
+        FindFirstObjectByType<SoundManager>().Play("BarcoComun");
+    }
 
-        int randomIndex = Random.Range(0, boatPrefabs.Length);
-        GameObject boat = Instantiate(boatPrefabs[randomIndex], spawnPos, Quaternion.identity);
+        if (type == BoatType.Lancha)
+    {
+        FindFirstObjectByType<SoundManager>().Play("Lancha");
+    }
 
-        BoatMovement2D moveScript = boat.GetComponent<BoatMovement2D>();
+        if (type == BoatType.Crucero)
+    {
+        FindFirstObjectByType<SoundManager>().Play("Crucero");
+    }
+}
 
-        switch (boat.name.Replace("(Clone)", "").Trim())
+
+    float GetSpeed(BoatType type)
+    {
+        return type switch
         {
-            case "Lancha":
-                moveScript.speed = 5f;
-                break;
-            case "BarcoComun":
-                moveScript.speed = 3.5f;
-                break;
-            case "Crucero":
-                moveScript.speed = 2.5f;
-                break;
-        }
-
-        moveScript.SetTarget(lighthouseCenter.position);
+            BoatType.Lancha => 5f,
+            BoatType.BarcoComun => 3.5f,
+            BoatType.Crucero => 2.2f,
+            _ => 3f
+        };
     }
 }

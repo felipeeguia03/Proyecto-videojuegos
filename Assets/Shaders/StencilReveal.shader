@@ -2,7 +2,10 @@ Shader "URP/StencilReveal2D"
 {
     Properties
     {
-        _BaseMap ("Texture", 2D) = "white" {}
+        _BaseMap ("Main Texture", 2D) = "white" {}
+        _NoiseTex ("Noise Texture", 2D) = "white" {}
+        _DissolveAmount ("Dissolve Amount", Range(0,1)) = 0
+        _EdgeColor ("Edge Color", Color) = (1,0.5,0,1)
         _Color ("Tint", Color) = (1,1,1,1)
     }
 
@@ -12,9 +15,9 @@ Shader "URP/StencilReveal2D"
 
         Pass
         {
-            Name "RevealPass"
+            Name "DissolveStencilReveal"
             Tags { "LightMode" = "SRPDefaultUnlit" }
-            
+
             Stencil
             {
                 Ref 1
@@ -45,6 +48,13 @@ Shader "URP/StencilReveal2D"
             TEXTURE2D(_BaseMap);
             SAMPLER(sampler_BaseMap);
             float4 _BaseMap_ST;
+
+            TEXTURE2D(_NoiseTex);
+            SAMPLER(sampler_NoiseTex);
+            float4 _NoiseTex_ST;
+
+            float _DissolveAmount;
+            float4 _EdgeColor;
             float4 _Color;
 
             Varyings vert (Attributes IN)
@@ -57,9 +67,19 @@ Shader "URP/StencilReveal2D"
 
             half4 frag (Varyings IN) : SV_Target
             {
-                half4 tex = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
-                return tex * _Color;
+                float noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, TRANSFORM_TEX(IN.uv, _NoiseTex)).r;
+                half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _Color;
+
+                float edge = 0.05;
+                if (noise < _DissolveAmount - edge)
+                    discard;
+
+                if (noise < _DissolveAmount)
+                    return _EdgeColor;
+
+                return col;
             }
+
             ENDHLSL
         }
     }

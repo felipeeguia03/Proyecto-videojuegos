@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4747766704365037149}
   - component: {fileID: -227022386132699987}
   - component: {fileID: -7711138477952878548}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BarcoComun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a7c8c97480c54f14d9a3614b5e7a17f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -1,52 +1,74 @@
-Shader "Custom/DisolveBarco"
+Shader "Custom/Dissolve2D"
 {
     Properties
     {
-        _MainTex("Main Texture", 2D) = "white" {}
-        _NoiseTex("Noise Texture", 2D) = "white" {}
-        _DissolveAmount("Dissolve Amount", Range(0,1)) = 0
-        _EdgeColor("Edge Color", Color) = (1,0.5,0,1)
+        _BaseMap ("Main Texture", 2D) = "white" {}
+        _NoiseTex ("Noise Texture", 2D) = "white" {}
+        _DissolveAmount ("Dissolve Amount", Range(0,1)) = 0
+        _EdgeColor ("Edge Color", Color) = (1,0.5,0,1)
+        _Color ("Tint", Color) = (1,1,1,1)
     }
+
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
-        LOD 100
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderPipeline"="UniversalPipeline" "Queue"="Transparent" "RenderType"="Transparent" }
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+            Name "RevealPass"
+            Tags { "LightMode" = "SRPDefaultUnlit" }
 
-            struct appdata_t {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            struct v2f {
-                float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-            };
-
-            sampler2D _MainTex;
-            sampler2D _NoiseTex;
-            float _DissolveAmount;
-            float4 _EdgeColor;
-
-            v2f vert (appdata_t v)
+            Stencil
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
+                Ref 1
+                Comp Equal
+                Pass Keep
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct Attributes
             {
-                float noise = tex2D(_NoiseTex, i.uv).r;
-                float4 col = tex2D(_MainTex, i.uv);
+                float4 positionOS : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct Varyings
+            {
+                float4 positionHCS : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            TEXTURE2D(_BaseMap);
+            SAMPLER(sampler_BaseMap);
+            float4 _BaseMap_ST;
+
+            TEXTURE2D(_NoiseTex);
+            SAMPLER(sampler_NoiseTex);
+            float4 _NoiseTex_ST;
+
+            float _DissolveAmount;
+            float4 _EdgeColor;
+            float4 _Color;
+
+            Varyings vert (Attributes IN)
+            {
+                Varyings OUT;
+                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
+                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
+                return OUT;
+            }
+
+            half4 frag (Varyings IN) : SV_Target
+            {
+                float noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, TRANSFORM_TEX(IN.uv, _NoiseTex)).r;
+                half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _Color;
 
                 float edge = 0.05;
                 if (noise < _DissolveAmount - edge)
@@ -57,7 +79,8 @@ Shader "Custom/DisolveBarco"
 
                 return col;
             }
-            ENDCG
+
+            ENDHLSL
         }
     }
 }

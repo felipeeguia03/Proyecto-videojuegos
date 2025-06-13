@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7195534390242689568}
   - component: {fileID: -6427612064671965594}
   - component: {fileID: -6535733152034242953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Crucero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 7bfd4331557e4432a95ab2e60c269cd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

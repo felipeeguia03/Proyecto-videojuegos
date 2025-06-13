@@ -27,7 +27,6 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        // Sonido de fondo del mar
         Play("Mar");
     }
 

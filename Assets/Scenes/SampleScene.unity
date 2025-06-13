@@ -147,7 +147,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206586707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: 202}
-  m_SizeDelta: {x: 569.4468, y: -41.58}
+  m_AnchoredPosition: {x: -193.7, y: 151.8}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206586709
 MonoBehaviour:
@@ -173,8 +173,18 @@ MonoBehaviour:
   mi_accion:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoMuerto, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 206586710}
+        m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp
+        m_MethodName: SumarBarcoMuerto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   subscripciones: []
 --- !u!114 &206586710
 MonoBehaviour:
@@ -188,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a274a5a005a2b542981c5cc048b8424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantidadBarcosMuertos: 0
-  cantidadBarcosIluminados: 0
 --- !u!114 &206586711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -237,8 +245,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -275,7 +283,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -5.225052, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1100,8 +1108,18 @@ MonoBehaviour:
   myEvent:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoMuerto, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 206586710}
+        m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp
+        m_MethodName: SumarBarcoMuerto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   nombreEmisor: EmisorMuerte
 --- !u!114 &1948477118
 MonoBehaviour:
@@ -1118,8 +1136,18 @@ MonoBehaviour:
   myEvent:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 206586710}, m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp, m_MethodName: SumarBarcoIluminado, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 206586710}
+        m_TargetAssemblyTypeName: ContadorBarcos, Assembly-CSharp
+        m_MethodName: SumarBarcoIluminado
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   nombreEmisor: EmisorIluminacion
 --- !u!1 &1963584238
 GameObject:
@@ -1299,3 +1327,5 @@ SceneRoots:
   - {fileID: 1942834191}
   - {fileID: 1963584241}
   - {fileID: 255606340}
+  - {fileID: 1857714331}
+  - {fileID: 858995453}

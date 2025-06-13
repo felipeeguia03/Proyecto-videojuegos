@@ -41,15 +41,7 @@ public class BoatMovement2D : MonoBehaviour
         // Si llegó al destino
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
-            if (pool != null)
-            {
-                pool.ReturnBoat(boatType, gameObject);
-            }
-            else
-            {
-                Debug.LogWarning("Pool no asignado, destruyendo el barco");
-                Destroy(gameObject);
-            }
+            Morir();
         }
     }
 
@@ -65,6 +57,32 @@ public class BoatMovement2D : MonoBehaviour
             Vector3 dir = (transform.position - target).normalized;
             Vector3 newTarget = transform.position + dir * 20f;
             SetTarget(newTarget);
+            Emitir("EmisorIluminacion");
+        }
+    }
+
+    public void Morir(){
+        if (pool != null)
+        {
+            pool.ReturnBoat(boatType, gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Pool no asignado, destruyendo el barco");
+            Destroy(gameObject);
+        }
+        if(!volviendo){
+            Emitir("EmisorMuerte");
+        }
+        
+    }
+
+    void Emitir(string emisor){
+        Emisor[] emisores = GameObject.Find("Boat-Factory-Manager").GetComponents<Emisor>();
+        foreach(Emisor emi in emisores){
+            if(emi.nombreEmisor == emisor){
+                emi.Emitir();
+            }
         }
     }
 }

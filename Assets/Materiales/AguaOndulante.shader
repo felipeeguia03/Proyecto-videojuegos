@@ -8,16 +8,16 @@ Shader "Custom/AguaOndulante"
         
         // Propiedades de las ondas
         _WaveSpeed ("Wave Speed", Float) = 1.0
-        _WaveAmplitude ("Wave Amplitude", Float) = 0.02
-        _WaveFrequency ("Wave Frequency", Float) = 5.0
+        _WaveAmplitude ("Wave Amplitude", Float) = 0.1
+        _WaveFrequency ("Wave Frequency", Float) = 3.0
         
         // Ondas secundarias para más realismo
-        _SecondWaveSpeed ("Second Wave Speed", Float) = 0.7
+        _SecondWaveSpeed ("Second Wave Speed", Float) = 0.4
         _SecondWaveAmplitude ("Second Wave Amplitude", Float) = 0.015
         _SecondWaveFrequency ("Second Wave Frequency", Float) = 8.0
         
         // Distorsión
-        _DistortionStrength ("Distortion Strength", Float) = 0.1
+        _DistortionStrength ("Distortion Strength", Float) = 0
         
         // Transparencia
         _Alpha ("Alpha", Range(0, 1)) = 0.8

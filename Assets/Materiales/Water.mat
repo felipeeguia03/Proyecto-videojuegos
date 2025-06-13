@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
+  m_Shader: {fileID: 4800000, guid: cef817be27059c1afa3422cfa5eda125, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -45,16 +45,16 @@ Material:
     - _DistortionStrength: 0.1
     - _EnableExternalAlpha: 0
     - _SecondWaveAmplitude: 0.015
-    - _SecondWaveFrequency: 8.0
+    - _SecondWaveFrequency: 8
     - _SecondWaveSpeed: 0.7
     - _WaveAmplitude: 0.02
-    - _WaveFrequency: 5.0
-    - _WaveSpeed: 1.0
+    - _WaveFrequency: 5
+    - _WaveSpeed: 1
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWaterColor: {r: 0.0, g: 0.2, b: 0.6, a: 1.0}
+    - _DeepWaterColor: {r: 0, g: 0.2, b: 0.6, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterColor: {r: 0.0, g: 0.5, b: 1.0, a: 0.8}
+    - _WaterColor: {r: 0, g: 0.5, b: 1, a: 0.8}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

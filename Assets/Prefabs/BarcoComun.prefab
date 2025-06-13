@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5723215303195873636}
   - component: {fileID: -4747766704365037149}
   - component: {fileID: -227022386132699987}
+  - component: {fileID: -7711138477952878548}
   m_Layer: 0
   m_Name: BarcoComun
   m_TagString: Untagged
@@ -59,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 623611f5c6bec4743adcd30c0457fb07, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -284,3 +285,16 @@ TrailRenderer:
   m_Autodestruct: 1
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-7711138477952878548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4062758992147897442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e696c4f8c650541a97b9f4a741fb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1

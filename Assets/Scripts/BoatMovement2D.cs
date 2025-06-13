@@ -21,6 +21,7 @@ public class BoatMovement2D : MonoBehaviour
         pool = boatPool;
         volviendo = false;
         gameObject.SetActive(true);
+        enabled = true;
     }
 
     public void SetTarget(Vector3 t)
@@ -28,20 +29,24 @@ public class BoatMovement2D : MonoBehaviour
         target = t;
         Vector3 dir = (target - transform.position).normalized;
 
-        // Aplicar rotación hacia el objetivo
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
     }
 
     void Update()
     {
-        // Movimiento hacia el objetivo
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        // Si llegó al destino
         if (Vector3.Distance(transform.position, target) < 0.5f)
         {
-            if (pool != null)
+            var dissolver = GetComponent<BoatDissolver>();
+            if (dissolver != null)
+            {
+                dissolver.StartDissolve(); // 💥 empieza desintegración
+                rb.linearVelocity = Vector2.zero; // detiene movimiento
+                this.enabled = false;       // desactiva este script mientras se disuelve
+            }
+            else if (pool != null)
             {
                 pool.ReturnBoat(boatType, gameObject);
             }
@@ -53,12 +58,11 @@ public class BoatMovement2D : MonoBehaviour
         }
     }
 
-  
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Luz") && !volviendo)
         {
-            Debug.Log("funciona");
+            Debug.Log("🚨 Barco iluminado: cambia de dirección y vuelve");
 
             volviendo = true;
 
